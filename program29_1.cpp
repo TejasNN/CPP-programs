@@ -1,0 +1,54 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//																			                                           
+//	Problem statement :	Write a program which accept one number, position from user and count number of ON(1) bits in it
+//                      without using % and / operator.
+//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#include<iostream>
+using namespace std;
+
+typedef unsigned int UINT;
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//	Function name :		CountOneBit
+//	Input :				unsigned integer
+//	Output :			unsigned integer
+// 	Description :		Returns count of 1's from input number. 
+// 	Author :			Tejas Nandakumar Nagvekar
+// 	Date :				07/06/2023
+// 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+UINT CountOneBit(UINT iNo)
+{
+    UINT iCnt = 0;
+
+    while(iNo != 0)
+    {
+        iNo = iNo & (iNo - 1);
+        iCnt++;
+    }
+    return iCnt;
+}
+
+/////////////////////////////////////////////////////////////////////////////////
+//	Entry point function													   //
+/////////////////////////////////////////////////////////////////////////////////
+
+int main()
+{
+    UINT iValue = 0;
+    UINT iRet = 0;
+
+    cout<<"Enter a number :"<<"\n";
+    cin>>iValue;
+
+    iRet = CountOneBit(iValue);
+
+    cout<<"The count of 1's is :"<<iRet<<"\n";
+
+    return 0;
+}
+// Time complexity : O(log n)
